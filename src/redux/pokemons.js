@@ -1,6 +1,4 @@
 import { POKEMON_ADDED, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_STARTED } from './actions'
-import {get} from 'lodash'
-
 
 //INITIAL STATE
 
@@ -12,7 +10,7 @@ const initialState = {
 
 //REDUCER
 
-export function pokeReducer(state = initialState, action) {
+export function pokemons(state = initialState, action) {
     switch (action.type) {
       case FETCH_POKEMONS_STARTED:
         return {

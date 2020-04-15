@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
-import { pokeReducer } from './pokemons'
+import { pokemons } from './pokemons'
 
 export const rootReducer = combineReducers({
-    pokeReducer
+    pokemons
   })
   

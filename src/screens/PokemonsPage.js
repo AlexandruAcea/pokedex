@@ -4,7 +4,6 @@ import {useSelector, connect} from 'react-redux'
 import {map, isEmpty, get} from 'lodash'
 
 import {fetchPokemons} from '../redux/actions'
-import {getPokemonList} from '../redux/pokemons'
 
 import ListItem from '../components/ListItem'
 
@@ -14,7 +13,7 @@ const PokemonsPage = ({ fetchPokemonList }) => {
         fetchPokemonList()
       }, []);
 
-    const pokemonList = get(useSelector((state) => state.pokeReducer), 'pokemons')
+    const pokemonList = get(useSelector((state) => state.pokemons), 'pokemons')
 
     const renderList = () => {
         if(isEmpty(pokemonList)) {

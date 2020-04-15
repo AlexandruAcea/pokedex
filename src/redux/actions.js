@@ -15,9 +15,7 @@ const ENDPOINT = `https://pokeapi.co/api/v2/generation/1`
 
 export const fetchPokemons = () => {
     return dispatch => {
-
-      dispatch(fetchPokemonsStarted());
-
+      dispatch(fetchPokemonsStarted())
       axios
         .get(ENDPOINT)
         .then(res => {
@@ -37,7 +35,6 @@ export const fetchPokemons = () => {
 const getSpecificPokemon = (pokemon) =>{
     return dispatch => {
         const URL = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
-
         axios
             .get(URL)
             .then((res) => {
