@@ -6,8 +6,8 @@ import axios from 'axios'
 export const FETCH_POKEMONS_SUCCESS = 'FETCH_POKEMONS_SUCCESS'
 export const FETCH_POKEMONS_FAILURE = 'FETCH_POKEMONS_FAILURE'
 export const FETCH_POKEMONS_STARTED = 'FETCH_POKEMONS_STARTED'
-
-export const POKEMON_ADDED = 'POKEMON_ADDED'
+export const POKEMON_SELECTED       = 'POKEMON_SELECTED'
+export const POKEMON_ADDED          = 'POKEMON_ADDED'
 
 const ENDPOINT = `https://pokeapi.co/api/v2/generation/1`
 
@@ -31,19 +31,37 @@ export const fetchPokemons = () => {
     };
   };
 
-
 const getSpecificPokemon = (pokemon) =>{
     return dispatch => {
         const URL = `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
         axios
             .get(URL)
             .then((res) => {
-                dispatch(fetchedNewPokemon(res.data))
+                dispatch(fetchNewPokemon(res.data))
         })
     }
 }
 
-const fetchedNewPokemon = pokemon => ({
+export const getPokemonById = (id) =>{
+    return dispatch => {
+        const URL = `https://pokeapi.co/api/v2/pokemon/${id}`
+        axios
+            .get(URL)
+            .then((res) => {
+                console.log(res.data)
+                dispatch(fetchNewPokemon(res.data))
+        })
+    }
+}
+
+export const selectPokemon = pokemon => ({
+    type: POKEMON_SELECTED,
+    payload: {
+      ...pokemon
+    }
+});
+
+const fetchNewPokemon = pokemon => ({
     type: POKEMON_ADDED,
     payload: {
       ...pokemon

@@ -3,11 +3,7 @@ import React from 'react';
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
+import { Router, Switch, Route } from "react-router-dom";
 
 import PokemonsPage from './PokemonsPage'
 import ViewPokemon from './ViewPokemon'
@@ -23,7 +19,7 @@ const App = () => {
         <div className="App">
           <Switch>
 
-            <Route path="/view">
+            <Route path="/viewPokemon/:id">
               <ViewPokemon />
             </Route>
 
