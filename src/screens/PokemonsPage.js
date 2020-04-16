@@ -1,34 +1,42 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useSelector, connect} from 'react-redux'
 
-import { get } from 'lodash'
+import { get, isEmpty } from 'lodash'
 
-import {fetchPokemons} from '../redux/actions'
+import {fetchPokemons, filterPokemons} from '../redux/actions'
 
 import PokemonsPageDetails from '../components/PokemonsPageDetails'
 import SearchBar from '../components/SearchBar'
 
-const PokemonsPage = ({ fetchPokemonList }) => {
+const PokemonsPage = ({ fetchPokemonList, filterList }) => {
 
     useEffect(() => {
         fetchPokemonList()
       }, []);
 
+    const [value, setValue] = useState('')
     const pokemonList = get(useSelector((state) => state.pokemons), 'pokemons')
+    const filteredPokemons = get(useSelector((state) => state.pokemons), 'filteredPokemons')
 
-    
+    const onChange = (event) => {
+        const filter = event.target.value
+
+        setValue(filter)
+        filterList(filter)
+    }
 
     return (
         <div>
-            <SearchBar/>
-            <PokemonsPageDetails pokemonList={pokemonList}/>
+            <SearchBar onChange={onChange} value={value}/>
+            <PokemonsPageDetails pokemonList={isEmpty(value) ? pokemonList : filteredPokemons}/>
        </div>
     )
 }
 
 function mapDispatchToProps(dispatch) {
     return({
-        fetchPokemonList: () => {dispatch(fetchPokemons())}
+        fetchPokemonList: () => {dispatch(fetchPokemons())},
+        filterList: (filter) => {dispatch(filterPokemons(filter))}
     })
 }
 

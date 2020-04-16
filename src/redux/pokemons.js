@@ -1,15 +1,16 @@
-import { POKEMON_SELECTED, POKEMON_ADDED, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_STARTED } from './actions'
+import { POKEMONS_FILTERED, POKEMON_SELECTED, POKEMON_ADDED, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_STARTED } from './actions'
 import history from '../utils/history'
-import {isEmpty, includes} from 'lodash'
+import {isEmpty, includes, map, without, isEqual} from 'lodash'
 
 
 //INITIAL STATE
 
 const initialState = {
-    loading:         false,
-    pokemons:        [],
-    error:           null,
-    selectedPokemon: null
+    loading:               false,
+    pokemons:              [],
+    filteredPokemons:      [],
+    error:                 null,
+    selectedPokemon:       null
 }
 
 //REDUCER
@@ -28,6 +29,29 @@ export function pokemons(state = initialState, action) {
           loading: false,
           error: null
         };
+
+      case POKEMONS_FILTERED:
+        const filter = action.payload
+        const pokemonList = state.pokemons
+
+        let filteredPokemons = map(pokemonList, (item) => {
+          if (includes(item.name, filter)) {
+            return item;}
+        });
+      
+        filteredPokemons = without(filteredPokemons, undefined)
+
+        if(isEqual(state.filteredPokemons, filteredPokemons)) {
+          return {
+            ...state
+          };
+        }
+
+        return {
+          ...state,
+          filteredPokemons
+        };
+  
 
       case POKEMON_SELECTED:
         const pokemon = action.payload

@@ -8,6 +8,7 @@ export const FETCH_POKEMONS_FAILURE = 'FETCH_POKEMONS_FAILURE'
 export const FETCH_POKEMONS_STARTED = 'FETCH_POKEMONS_STARTED'
 export const POKEMON_SELECTED       = 'POKEMON_SELECTED'
 export const POKEMON_ADDED          = 'POKEMON_ADDED'
+export const POKEMONS_FILTERED      = 'POKEMONS_FILTERED'
 
 const ENDPOINT = `https://pokeapi.co/api/v2/generation/1`
 
@@ -52,6 +53,11 @@ export const getPokemonById = (id) =>{
         })
     }
 }
+
+export const filterPokemons = filter => ({
+    type: POKEMONS_FILTERED,
+    payload: filter
+});
 
 export const selectPokemon = pokemon => ({
     type: POKEMON_SELECTED,
