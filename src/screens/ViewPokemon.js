@@ -56,12 +56,8 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
                     <List>
                         <ListItem><Title>Height: {selectedPokemon.height}</Title></ListItem>
                         <ListItem><Title>Weight: {selectedPokemon.weight}</Title></ListItem>
-                        <ListItem>
-                        <ListItem>
-                            <Title>My abilities are:</Title>
-                            <TypesWrapper>{renderAbilities()}</TypesWrapper>
-                        </ListItem>
-                        </ListItem>
+                        <ListItem><Title>My abilities are:</Title></ListItem>
+                        <ListItem><TypesWrapper>{renderAbilities()}</TypesWrapper></ListItem>
                     </List>
                 </Wrapper>
             </Card>)

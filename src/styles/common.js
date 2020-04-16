@@ -39,7 +39,7 @@ export const TypesWrapper = styled.section`
    width: 100%;
    justify-content: center;
    align-items: center;
-   margin-top: 30px;
+   margin-top: 10px;
 `;
 
 export const MainWrapper = styled.section`
@@ -124,4 +124,5 @@ export const List = styled.ul`
 
 export const ListItem = styled.li`
     list-style-type: none;
+    margin: 5px 0 5px 0px;
 `
