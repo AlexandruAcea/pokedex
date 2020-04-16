@@ -56,10 +56,6 @@ export const ListItemWrapper = styled.section`
         padding-right: 10px;
     `;
 
-export const AbilitiesWrapper = styled.section`
-   margin-top: 30px;
-`;
-
 export const Title = styled.h1`
     font-size: 2em;
     text-align: center;
@@ -120,4 +116,12 @@ export const StyledInput = styled.input`
     left:0;
     right:0;
     margin-top: 60px;
+`
+
+export const List = styled.ul`
+
+`
+
+export const ListItem = styled.li`
+    list-style-type: none;
 `

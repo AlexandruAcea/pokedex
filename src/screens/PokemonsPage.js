@@ -8,7 +8,7 @@ import PokemonsPageDetails from '../components/PokemonsPageDetails'
 import SearchBar from '../components/SearchBar'
 
 const PokemonsPage = ({ fetchPokemonList, filterList }) => {
-
+    
     const [value, setValue] = useState('')
     const pokemonList = get(useSelector((state) => state.pokemons), 'pokemons')
     const filteredPokemons = get(useSelector((state) => state.pokemons), 'filteredPokemons')

@@ -4,7 +4,7 @@ import {useParams} from 'react-router-dom'
 
 import { get, isEmpty, map } from 'lodash'
 import { getPokemonById, selectPokemon } from '../redux/actions'
-import { BackgroundImage, MainWrapper, Card, Wrapper, ImagesWrapper, Title, AbilitiesWrapper, Image, PokemonType, TypesWrapper } from '../styles/common'
+import { BackgroundImage, MainWrapper, Card, Wrapper, ImagesWrapper, Title, Image, PokemonType, TypesWrapper, ListItem, List } from '../styles/common'
 
 import Background from '../assets/background.png';
 
@@ -52,16 +52,17 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
                 <Wrapper>
                     <ImagesWrapper>{renderSprites()}</ImagesWrapper>
                     <Title>Hi, I'm {selectedPokemon.name}</Title>
-
                     <TypesWrapper><Title>Types:</Title>{renderTypes()}</TypesWrapper>
-                    <Title>Height: {selectedPokemon.height}</Title>
-                    <Title>Weight: {selectedPokemon.weight}</Title>
-
-                    <AbilitiesWrapper>
-                        <Title>My abilities are:</Title>
-                        <TypesWrapper>{renderAbilities()}</TypesWrapper>
-                    </AbilitiesWrapper>
-
+                    <List>
+                        <ListItem><Title>Height: {selectedPokemon.height}</Title></ListItem>
+                        <ListItem><Title>Weight: {selectedPokemon.weight}</Title></ListItem>
+                        <ListItem>
+                        <ListItem>
+                            <Title>My abilities are:</Title>
+                            <TypesWrapper>{renderAbilities()}</TypesWrapper>
+                        </ListItem>
+                        </ListItem>
+                    </List>
                 </Wrapper>
             </Card>)
 }            <BackgroundImage image={Background}/>
