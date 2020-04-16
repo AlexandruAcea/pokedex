@@ -9,13 +9,14 @@ import SearchBar from '../components/SearchBar'
 
 const PokemonsPage = ({ fetchPokemonList, filterList }) => {
 
-    useEffect(() => {
-        fetchPokemonList()
-      }, []);
-
     const [value, setValue] = useState('')
     const pokemonList = get(useSelector((state) => state.pokemons), 'pokemons')
     const filteredPokemons = get(useSelector((state) => state.pokemons), 'filteredPokemons')
+
+    useEffect(() => {
+        if(isEmpty(pokemonList))
+            fetchPokemonList()
+      }, []);
 
     const onChange = (event) => {
         const filter = event.target.value
