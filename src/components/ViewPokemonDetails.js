@@ -8,10 +8,11 @@ import { get, isEmpty, map } from 'lodash'
 import { getPokemonById, selectPokemon } from '../redux/actions'
 
 import { MainWrapper, BackgroundImage} from '../components/PokemonsPageDetails'
+import { Image } from '../components/ListItem'
 
 import Background from '../assets/background.png';
 
-const ViewPokemon = ({getPokemonById, selectPokemon}) => {
+const ViewPokemonDetails = ({getPokemonById, selectPokemon}) => {
     let { id } = useParams();
 
     const pokemonList     = get(useSelector((state) => state.pokemons), 'pokemons')
@@ -28,9 +29,9 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
     }
 
     const renderSprites = () => {
-        return map(selectedPokemon.sprites, (sprite, key) => {
-            if(sprite)
-                return <Image src={sprite} key={key}/>
+        return map(selectedPokemon.sprites, (sprite) => {
+            console.log(sprite)
+            return <Image coverImage={sprite}></Image>
         })
     }
     
@@ -38,8 +39,8 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
         <MainWrapper>
             {selectedPokemon && 
             (<Card>
-                <ImagesWrapper>{renderSprites()}</ImagesWrapper>
                 <Title>{selectedPokemon.name}</Title>
+                {renderSprites()}
             </Card>)
 }            <BackgroundImage image={Background}/>
         </MainWrapper>
@@ -59,24 +60,12 @@ export const Card = styled.section`
     bottom: 50px;
 `;
 
-const ImagesWrapper = styled.section`
-   display: flex;
-   width: 100%;
-   height: 80px;
-   justify-content: center;
-   margin-top: 50px;
-`;
-
 const Title = styled.h1`
-    font-size: 2em;
-    text-align: center;
-    color: palevioletred;
-    margin-top: 20px;
+        font-size: 1.5em;
+        text-align: center;
+        color: palevioletred;
 `;
 
-const Image = styled.img`
-    object-fit: contain;
-`;
 
 function mapDispatchToProps(dispatch) {
     return({
@@ -85,4 +74,4 @@ function mapDispatchToProps(dispatch) {
     })
 }
 
-export default connect(null, mapDispatchToProps)(ViewPokemon)
+export default connect(null, mapDispatchToProps)(ViewPokemonDetails)

@@ -1,6 +1,5 @@
 import { POKEMON_SELECTED, POKEMON_ADDED, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_STARTED } from './actions'
 import history from '../utils/history'
-
 import {isEmpty} from 'lodash'
 
 

@@ -48,7 +48,6 @@ export const getPokemonById = (id) =>{
         axios
             .get(URL)
             .then((res) => {
-                console.log(res.data)
                 dispatch(fetchNewPokemon(res.data))
         })
     }

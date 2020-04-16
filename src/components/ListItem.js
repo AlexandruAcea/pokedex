@@ -35,7 +35,6 @@ const ListItem = ({title, coverImage, ...pokemon}) => {
   
     const Wrapper = styled.section`
         background: papayawhip;
-        margin: 20px;
         border-radius: 10px;
         padding-bottom: 15px;
     `;

@@ -20,30 +20,40 @@ const PokemonsPageDetails = ({ pokemonList }) => {
     }
 
     return (
-        <div>
+        <MainWrapper>
             <Grid>
                 {renderList()}
             </Grid>
-            <BackgroundImage/>
-        </div>
+            <BackgroundImage image={Background}/>
+        </MainWrapper>
     )
 }
 
-const BackgroundImage = styled.section`
+export const BackgroundImage = styled.section`
         width: 100vw;
         height: 100vh;
         position: fixed;
         top:0;
         z-index: -10;
-        background-image: url(${Background});
+        background-image: url(${props => props.image});
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
+        background-size: cover;
     `;
 
 const Grid = styled.section`
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
+        max-width: 800px;
+        row-gap: 20px;
+        column-gap: 20px;
     `;
+
+export const MainWrapper = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
 
 export default (PokemonsPageDetails)
