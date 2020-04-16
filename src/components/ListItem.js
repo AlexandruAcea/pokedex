@@ -37,6 +37,8 @@ const ListItem = ({title, coverImage, ...pokemon}) => {
         background: papayawhip;
         border-radius: 10px;
         padding-bottom: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
     `;
 
 export default ListItem

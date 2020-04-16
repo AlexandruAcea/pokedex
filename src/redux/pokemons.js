@@ -1,6 +1,6 @@
 import { POKEMON_SELECTED, POKEMON_ADDED, FETCH_POKEMONS_SUCCESS, FETCH_POKEMONS_FAILURE, FETCH_POKEMONS_STARTED } from './actions'
 import history from '../utils/history'
-import {isEmpty} from 'lodash'
+import {isEmpty, includes} from 'lodash'
 
 
 //INITIAL STATE
@@ -43,6 +43,11 @@ export function pokemons(state = initialState, action) {
 
       case POKEMON_ADDED:
         let newArray = state.pokemons
+
+        if(includes(newArray, action.payload)) {
+          return {...state}
+        }
+
         newArray.push(action.payload)
 
         return {

@@ -6,6 +6,7 @@ import { get } from 'lodash'
 import {fetchPokemons} from '../redux/actions'
 
 import PokemonsPageDetails from '../components/PokemonsPageDetails'
+import SearchBar from '../components/SearchBar'
 
 const PokemonsPage = ({ fetchPokemonList }) => {
 
@@ -15,8 +16,13 @@ const PokemonsPage = ({ fetchPokemonList }) => {
 
     const pokemonList = get(useSelector((state) => state.pokemons), 'pokemons')
 
+    
+
     return (
-       <PokemonsPageDetails pokemonList={pokemonList}/>
+        <div>
+            <SearchBar/>
+            <PokemonsPageDetails pokemonList={pokemonList}/>
+       </div>
     )
 }
 

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import {useSelector, connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
-import styled from 'styled-components'
 
 import { get, isEmpty, map } from 'lodash'
 
 import { getPokemonById, selectPokemon } from '../redux/actions'
 
 import { MainWrapper, BackgroundImage} from '../components/PokemonsPageDetails'
+import { Card, Wrapper, ImagesWrapper, Title, AbilitiesWrapper, Image, PokemonType, TypesWrapper } from '../styles/common'
 
 import Background from '../assets/background.png';
 
@@ -33,50 +33,44 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
                 return <Image src={sprite} key={key}/>
         })
     }
+
+    const renderTypes = () => {
+        return map(selectedPokemon.types, (type, key) => {
+            if(type)
+                return <PokemonType key={key}>{type.type.name}</PokemonType>
+        })
+    }
+
+    const renderAbilities = () => {
+        return map(selectedPokemon.abilities, (ability, key) => {
+            if(ability)
+                return <PokemonType key={key}>{ability.ability.name}</PokemonType>
+        })
+    }
     
     return (
         <MainWrapper>
             {selectedPokemon && 
             (<Card>
-                <ImagesWrapper>{renderSprites()}</ImagesWrapper>
-                <Title>{selectedPokemon.name}</Title>
+                <Wrapper>
+                    <ImagesWrapper>{renderSprites()}</ImagesWrapper>
+                    <Title>Hi, I'm {selectedPokemon.name}</Title>
+
+                    <TypesWrapper><Title>Types:</Title>{renderTypes()}</TypesWrapper>
+                    <Title>Height: {selectedPokemon.height}</Title>
+                    <Title>Weight: {selectedPokemon.weight}</Title>
+
+                    <AbilitiesWrapper>
+                        <Title>My abilities are:</Title>
+                        <TypesWrapper>{renderAbilities()}</TypesWrapper>
+                    </AbilitiesWrapper>
+
+                </Wrapper>
             </Card>)
 }            <BackgroundImage image={Background}/>
         </MainWrapper>
     )
 }    
-
-export const Card = styled.section`
-    width: 60%;
-    height: 90%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: papayawhip;
-    border-radius: 10px;
-    position: absolute;
-    top: 50px;
-    bottom: 50px;
-`;
-
-const ImagesWrapper = styled.section`
-   display: flex;
-   width: 100%;
-   height: 80px;
-   justify-content: center;
-   margin-top: 50px;
-`;
-
-const Title = styled.h1`
-    font-size: 2em;
-    text-align: center;
-    color: palevioletred;
-    margin-top: 20px;
-`;
-
-const Image = styled.img`
-    object-fit: contain;
-`;
 
 function mapDispatchToProps(dispatch) {
     return({

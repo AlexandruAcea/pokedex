@@ -48,6 +48,7 @@ const Grid = styled.section`
         max-width: 800px;
         row-gap: 20px;
         column-gap: 20px;
+        padding-top: 150px
     `;
 
 export const MainWrapper = styled.section`
