@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 export const Grid = styled.section`
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        max-width: 800px;
-        row-gap: 20px;
-        column-gap: 20px;
-        padding-top: 150px
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 800px;
+    row-gap: 20px;
+    column-gap: 20px;
+    padding-top: 150px
 `;
 
 export const Card = styled.section`
@@ -49,11 +49,11 @@ export const MainWrapper = styled.section`
 `;
 
 export const ListItemWrapper = styled.section`
-        background: papayawhip;
-        border-radius: 10px;
-        padding-bottom: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
+    background: papayawhip;
+    border-radius: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     `;
 
 export const Title = styled.h1`
@@ -91,16 +91,16 @@ export const PokemonType = styled.h1`
 `;
 
 export const BackgroundImage = styled.section`
-        width: 100vw;
-        height: 100vh;
-        position: fixed;
-        top:0;
-        z-index: -10;
-        background-image: url(${props => props.image});
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-        background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top:0;
+    z-index: -10;
+    background-image: url(${props => props.image});
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
     `;
 
 export const StyledInput = styled.input`

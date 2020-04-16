@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 //TYPES
 
 export const FETCH_POKEMONS_SUCCESS = 'FETCH_POKEMONS_SUCCESS'
@@ -20,7 +19,7 @@ export const fetchPokemons = () => {
       axios
         .get(ENDPOINT)
         .then(res => {
-            res.data.pokemon_species.forEach(function(pokemon){
+            res.data.pokemon_species.forEach((pokemon) => {
                 dispatch(getSpecificPokemon(pokemon))
             })
 

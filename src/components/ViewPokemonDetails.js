@@ -48,7 +48,7 @@ const ViewPokemonDetails = ({getPokemonById, selectPokemon}) => {
     )
 }    
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return({
         getPokemonById: (id) => {dispatch(getPokemonById(id))},
         selectPokemon: (pokemon) => {dispatch(selectPokemon(pokemon))}

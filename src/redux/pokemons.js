@@ -2,7 +2,6 @@ import { POKEMONS_FILTERED, POKEMON_SELECTED, POKEMON_ADDED, FETCH_POKEMONS_SUCC
 import history from '../utils/history'
 import {isEmpty, includes, map, without, isEqual} from 'lodash'
 
-
 //INITIAL STATE
 
 const initialState = {

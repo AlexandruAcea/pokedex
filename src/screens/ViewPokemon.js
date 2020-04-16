@@ -57,7 +57,9 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
                         <ListItem><Title>Height: {selectedPokemon.height}</Title></ListItem>
                         <ListItem><Title>Weight: {selectedPokemon.weight}</Title></ListItem>
                         <ListItem><Title>My abilities are:</Title></ListItem>
-                        <ListItem><TypesWrapper>{renderAbilities()}</TypesWrapper></ListItem>
+                        <ListItem>
+                            <TypesWrapper>{renderAbilities()}</TypesWrapper>
+                        </ListItem>
                     </List>
                 </Wrapper>
             </Card>)
@@ -66,7 +68,7 @@ const ViewPokemon = ({getPokemonById, selectPokemon}) => {
     )
 }    
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = (dispatch) => {
     return({
         getPokemonById: (id) => {dispatch(getPokemonById(id))},
         selectPokemon: (pokemon) => {dispatch(selectPokemon(pokemon))}
