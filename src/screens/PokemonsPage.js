@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react'
 import {useSelector, connect} from 'react-redux'
 
 import { get, isEmpty } from 'lodash'
-
 import {fetchPokemons, filterPokemons} from '../redux/actions'
 
 import PokemonsPageDetails from '../components/PokemonsPageDetails'

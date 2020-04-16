@@ -3,11 +3,8 @@ import {useSelector, connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
 
 import { get, isEmpty, map } from 'lodash'
-
 import { getPokemonById, selectPokemon } from '../redux/actions'
-
-import { MainWrapper, BackgroundImage} from '../components/PokemonsPageDetails'
-import { Card, Wrapper, ImagesWrapper, Title, AbilitiesWrapper, Image, PokemonType, TypesWrapper } from '../styles/common'
+import { BackgroundImage, MainWrapper, Card, Wrapper, ImagesWrapper, Title, AbilitiesWrapper, Image, PokemonType, TypesWrapper } from '../styles/common'
 
 import Background from '../assets/background.png';
 

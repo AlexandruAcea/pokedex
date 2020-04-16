@@ -2,8 +2,7 @@ import React from 'react'
 import {useDispatch} from 'react-redux'
 
 import {selectPokemon} from '../redux/actions'
-
-import styled from 'styled-components'
+import {SmallerTitle, ListItemWrapper, ItemImage} from '../styles/common'
 
 const ListItem = ({title, coverImage, ...pokemon}) => {
 
@@ -14,31 +13,13 @@ const ListItem = ({title, coverImage, ...pokemon}) => {
     }
     
     return (
-        <Wrapper onClick={() => viewPokemon()}>
-            <Image src={coverImage}></Image>
-            <Title>
+        <ListItemWrapper onClick={() => viewPokemon()}>
+            <ItemImage src={coverImage}></ItemImage>
+            <SmallerTitle>
                {title}
-            </Title>
-        </Wrapper>
+            </SmallerTitle>
+        </ListItemWrapper>
     )
 }
-
-    const Title = styled.h1`
-        font-size: 1.5em;
-        text-align: center;
-        color: palevioletred;
-    `;
   
-    const Image = styled.img`
-        src: ${props => props.coverImage};
-    `;
-  
-    const Wrapper = styled.section`
-        background: papayawhip;
-        border-radius: 10px;
-        padding-bottom: 15px;
-        padding-left: 10px;
-        padding-right: 10px;
-    `;
-
 export default ListItem
