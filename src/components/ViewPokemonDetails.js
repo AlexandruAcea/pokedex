@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import {useSelector, connect} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {useParams} from 'react-router-dom'
 
 import { get, isEmpty, map } from 'lodash'
@@ -13,20 +13,21 @@ import { Card, SmallerTitle } from '../styles/common'
 
 import Background from '../assets/background.png';
 
-const ViewPokemonDetails = ({getPokemonById, selectPokemon}) => {
+const ViewPokemonDetails = () => {
     let { id } = useParams();
 
     const pokemonList     = get(useSelector((state) => state.pokemons), 'pokemons')
     const selectedPokemon = get(useSelector((state) => state.pokemons), 'selectedPokemon')
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if(!selectedPokemon) {
-            getPokemonById(id)
+            dispatch(getPokemonById(id))
         }
       }, []);
 
     if(!selectedPokemon && !isEmpty(pokemonList)) {
-        selectPokemon(pokemonList[0])
+        dispatch(selectPokemon(pokemonList[0]))
     }
 
     const renderSprites = () => {
@@ -48,11 +49,4 @@ const ViewPokemonDetails = ({getPokemonById, selectPokemon}) => {
     )
 }    
 
-const mapDispatchToProps = (dispatch) => {
-    return({
-        getPokemonById: (id) => {dispatch(getPokemonById(id))},
-        selectPokemon: (pokemon) => {dispatch(selectPokemon(pokemon))}
-    })
-}
-
-export default connect(null, mapDispatchToProps)(ViewPokemonDetails)
+export default ViewPokemonDetails
