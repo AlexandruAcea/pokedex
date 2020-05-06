@@ -5,3 +5,4 @@ I've tried to make a simple sounding task into a project that's as close to prod
 You can see the project at https://ace-pokedex.herokuapp.com
 
 Project made with create-react-app, React Hooks, React-Redux, Redux-Thunk, Styled-Components.
+

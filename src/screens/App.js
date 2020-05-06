@@ -1,23 +1,36 @@
 import React from 'react';
+
+import { Provider } from 'react-redux'
+import { store } from '../redux/store'
+
+import { Router, Switch, Route } from "react-router-dom";
+
+import PokemonsPage from './PokemonsPage'
+import ViewPokemon from './ViewPokemon'
+
+import history from '../utils/history'
+
 import '../styles/css/app.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router history={history}>
+        <div className="App">
+          <Switch>
+
+            <Route path="/viewPokemon/:id">
+              <ViewPokemon />
+            </Route>
+
+            <Route path="/">
+              <PokemonsPage />
+            </Route>
+
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
   );
 }
 
